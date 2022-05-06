@@ -6,77 +6,97 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/dataLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Maxim Novikov"></TextView>
-
-        <LinearLayout
-            android:id="@+id/headLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/avatarView"
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/shorDescView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Короткое описание\n" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fieldLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/buttonsLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:background="#FA5F6571">
 
-        <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Edit" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/back"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Home" />
+            <LinearLayout
+                android:id="@+id/dataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/delete_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Delete" />
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:capitalize="words"
+                    android:maxHeight="50dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp"></TextView>
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/headLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/avatarView"
+                        android:layout_width="35dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#C4C4C4"
+                        app:srcCompat="@drawable/ic_launcher_background" />
+
+                    <TextView
+                        android:id="@+id/shorDescView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:background="#C4C4C4"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:text="Короткое описание\n"
+                        android:textColor="#000000" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fieldLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/edit_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Изменить" />
+
+                <Button
+                    android:id="@+id/back"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Назад" />
+
+                <Button
+                    android:id="@+id/delete_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Удалить" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

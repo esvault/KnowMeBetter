@@ -14,5 +14,7 @@ class Profile(var fullName: String) : Serializable{
         fields[key] = value
     }
 
+    fun deleteField(key: String) = fields.remove(key)
+
     fun returnData() = fields
 }

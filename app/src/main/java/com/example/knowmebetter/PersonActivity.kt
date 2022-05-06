@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.knowmebetter.model.Profile
@@ -83,7 +84,7 @@ class PersonActivity: AppCompatActivity(), View.OnClickListener {
             .getChildAt(1) as TextView
         val desc = "Короткое описание:\n" + profile.shortDescription
         shortDescription.text = desc
-        val fields = dataLayout.getChildAt(2) as LinearLayout
+        val fields = dataLayout.getChildAt(2)as LinearLayout
         fieldsMap.forEach {
             val value = it.key + ": " + it.value
             val textView = TextView(this)

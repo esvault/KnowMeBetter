@@ -7,12 +7,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.knowmebetter.model.Profile
 import com.example.knowmebetter.model.ProfilePool
 
 class PersonEditActivity: AppCompatActivity(), View.OnClickListener {
     private lateinit var  dataLayout: LinearLayout
+    private lateinit var fieldLayout: LinearLayout
     private lateinit var addBtn: Button
     private lateinit var saveBtn: Button
 //    private lateinit var profile: Profile
@@ -31,6 +33,7 @@ class PersonEditActivity: AppCompatActivity(), View.OnClickListener {
 
         saveBtn = findViewById(R.id.save_btn)
         addBtn = findViewById(R.id.add_btn)
+        fieldLayout = findViewById(R.id.fieldLayout)
         dataLayout = findViewById(R.id.dataEditLayout)
 
         showProfile(dataLayout)
@@ -54,9 +57,14 @@ class PersonEditActivity: AppCompatActivity(), View.OnClickListener {
                 key.hint = "Key"
                 val value = EditText(this)
                 value.hint = "Value"
-
+//                val delBtn = Button(this)
+//                delBtn.setOnClickListener {
+//                    profilePool.deleteProfileField(index, key.text.toString())
+//                    showProfile(dataLayout)
+//                }
                 field.addView(key)
                 field.addView(value)
+//                field.addView(delBtn)
 
                 (dataLayout.getChildAt(2) as LinearLayout).addView(field)
             }
@@ -88,7 +96,8 @@ class PersonEditActivity: AppCompatActivity(), View.OnClickListener {
             val cur = fields.getChildAt(i) as LinearLayout
             val key = (cur.getChildAt(0) as EditText).text.toString()
             val value = (cur.getChildAt(1) as EditText).text.toString()
-            changesMap[key] = value
+            if (key.compareTo("") != 0)
+                changesMap[key] = value
         }
         profilePool.editProfileName(index, nameField.text.toString())
         profilePool.editProfileDesc(index, shortDescription.text.toString())
@@ -106,7 +115,8 @@ class PersonEditActivity: AppCompatActivity(), View.OnClickListener {
             .getChildAt(1) as LinearLayout)
             .getChildAt(1) as EditText
         descView.text = desc
-        val fields = dataLayout.getChildAt(2) as LinearLayout
+        val fields = dataLayout.getChildAt(2)as LinearLayout
+        fields.removeAllViews()
         val lParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -119,10 +129,17 @@ class PersonEditActivity: AppCompatActivity(), View.OnClickListener {
             val editValue = EditText(this).apply {
                 text = SpannableStringBuilder(it.value)
             }
+            val delBtn = Button(this).apply {
+                setOnClickListener {
+                    profilePool.deleteProfileField(index, editKey.text.toString())
+                    showProfile(dataLayout)
+                }
+            }
             val llField = LinearLayout(this).apply {
                 orientation = LinearLayout.HORIZONTAL
                 addView(editKey, lParams)
                 addView(editValue, lParams)
+                addView(delBtn, lParams)
             }
             fields.addView(llField)
         }

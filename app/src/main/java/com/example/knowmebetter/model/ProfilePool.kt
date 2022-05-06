@@ -28,5 +28,10 @@ class ProfilePool(val profiles: MutableList<Profile> = mutableListOf(), var size
         }
     }
 
+    fun deleteProfileField(index: Int, key: String) {
+        val currentProfile = profiles[index]
+        currentProfile.deleteField(key)
+    }
+
     fun getProfile(index: Int) = profiles[index]
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         persons.removeAllViews()
         displayPersons(profilePool, persons)
     }
+
     override fun onDestroy() {
         super.onDestroy()
         writeRecordsToFile(applicationContext, profilePool)
@@ -117,6 +119,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "Else branch", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menu!!.add("menu1")
+        menu!!.add("menu2")
+        menu!!.add("menu3")
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun displayPersons(from: ProfilePool, to: LinearLayout) {

@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Name" />
+            android:hint="Имя"
+            android:inputType="textPersonName" />
 
         <LinearLayout
             android:id="@+id/newHeadLayout"
@@ -63,17 +63,17 @@
 
         <Button
             android:id="@+id/new_add_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add" />
+            android:text="Новая заметка" />
 
         <Button
             android:id="@+id/new_save_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save" />
+            android:text="Сохранить" />
 
     </LinearLayout>
 
