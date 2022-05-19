@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 fos = applicationContext.openFileOutput(fileName, Context.MODE_PRIVATE)
                 oos = ObjectOutputStream(fos)
                 oos.writeObject(profilePool)
-                oos.close()
                 true
             } catch (e: Exception) {
 //            Log.e(getClassName(), "Cant save records" + e.message)
@@ -57,7 +56,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 fin = applicationContext.openFileInput(fileName)
                 ois = ObjectInputStream(fin)
                 val profilePool = ois.readObject() as ProfilePool
-                ois.close()
 //            Log.v(getClassName(), "Records read successfully")
                 profilePool
             } catch (e: Exception) {
@@ -98,13 +96,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-//        Toast.makeText(this, "Main Activity resumed", Toast.LENGTH_LONG).show()
+
         persons.removeAllViews()
         displayPersons(profilePool, persons)
+
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onPause() {
+        super.onPause()
         writeRecordsToFile(applicationContext, profilePool)
     }
 
@@ -121,13 +120,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
-        menu!!.add("menu1")
-        menu!!.add("menu2")
-        menu!!.add("menu3")
-        return super.onCreateOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//
+//        menu!!.add("menu1")
+//        menu!!.add("menu2")
+//        menu!!.add("menu3")
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
     private fun displayPersons(from: ProfilePool, to: LinearLayout) {
         for (i in 0 until from.size) {
