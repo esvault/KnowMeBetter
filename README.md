@@ -1,4 +1,5 @@
 # KnowMeBetter
+[![CodeFactor](https://www.codefactor.io/repository/github/esvault/knowmebetter/badge)](https://www.codefactor.io/repository/github/esvault/knowmebetter)
 
 ## Мобильное приложение для создания заметок о людях
 
